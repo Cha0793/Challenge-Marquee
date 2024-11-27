@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tech Challenge</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 20%;
+            max-width: 800px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .marquee-right {
+            animation: moveRight 5s infinite;
+        }
+
+        .marquee-left {
+            animation: moveLeft 5s infinite;
+        }
+
+        .marquee-alternate {
+            animation: moveAlternate 5s infinite;
+        }
+
+        .marquee-color {
+            animation: moveAlternate 5s infinite, changeTextColor 1s infinite;
+        }
+
+        .marquee-up {
+            animation: moveUp 5s infinite;
+        }
+
+        .marquee-down {
+            animation: moveDown 5s infinite;
+        }
+
+        .marquee-bounce {
+            animation: bounceUpDown 2s ease-in-out infinite alternate;
+        }
+
+        .marquee-box {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            background-color: red;
+            animation: moveAlternate 5s infinite, changeBoxColor 1s infinite;
+        }
+
+        @keyframes moveRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes moveLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes moveAlternate {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(100%); }
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes moveDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes bounceUpDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes changeTextColor {
+            0% { color: red; }
+            50% { color: blue; }
+            100% { color: green; }
+        }
+
+        @keyframes changeBoxColor {
+            0% { background-color: red; }
+            50% { background-color: blue; }
+            100% { background-color: green; }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><p id="p1" class="marquee marquee-right">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p2" class="marquee marquee-left">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p3" class="marquee marquee-alternate">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p4" class="marquee marquee-color">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p5" class="marquee marquee-up">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p6" class="marquee marquee-down">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><p id="p7" class="marquee marquee-bounce">TEXT</p></td>
+        </tr>
+        <tr>
+            <td><div id="p8" class="marquee marquee-box"></div></td>
+        </tr>
+        <tr>
+            <td>
+                <button id="startbtn">Start</button>
+                <button id="stopbtn">Stop</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        
+        document.getElementById("startbtn").addEventListener("click", function() {
+            document.querySelectorAll('.marquee').forEach(el => {
+                el.style.animationPlayState = "running"; 
+            });
+        });
+
+        
+        document.getElementById("stopbtn").addEventListener("click", function() {
+            document.querySelectorAll('.marquee').forEach(el => {
+                el.style.animationPlayState = "paused"; 
+            });
+        });
+    </script>
+</body>
+</html>
